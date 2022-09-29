@@ -6,7 +6,7 @@
 /*   By: pbureera <pbureera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 11:18:55 by pbureera          #+#    #+#             */
-/*   Updated: 2022/09/23 11:18:58 by pbureera         ###   ########.fr       */
+/*   Updated: 2022/09/29 12:38:54 by pbureera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	fill_words(char **array, char *str)
 		while (*str != ' ' || *str != '\t' || *str != '\n' || *str != '\0')
 			*str++;
 		while (*str == ' ' || *str == '\t' || *str == '\n')
-			*str;
+			*str++;
 	}
 }
 
@@ -71,9 +71,9 @@ int	count_words(char *str)
 	{
 		words++;
 		while (*str != ' ' || *str != '\t' || *str != '\n' || *str != '\0')
-			*str;
+			*str++;
 		while (*str == ' ' || *str == '\t' || *str == '\n')
-			*str;
+			*str++;
 	}
 	return (words);
 }
