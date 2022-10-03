@@ -14,70 +14,68 @@
 
 int	ft_atoi(char *str)
 {
-	int	i;
-	int	sign;
-	int	result;
+	int result;
+	int sign;
 
-	i = 0;
-	sign = 1;
 	result = 0;
-	while (str[i] >= 9 && str[i] <= 13)
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	sign = 1;
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-')
+		sign = -1;
+	if (*str == '-' || *str == '+')
+		str++;
+	while (*str >= '0' && *str <= '9')
 	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
+		result = result * 10 + *str - '0';
+		str++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10 + str[i] - 0;
-		i++;
-	}
-	return (result * sign);
+	return (sign * result);
 }
 
 void	ft_putchar(char c)
 {
-	write (1, &c, 1);
+	write(1, &c, 1);
 }
 
-void	ft_putnbr(int nbr)
+void	ft_putnbr(int nb)
 {
-	unsigned int	n;
-	
-	if (nbr < 0)
+	if (nb == -2147483648)
 	{
-		n = (unsigned int)nbr * -1;
 		ft_putchar('-');
+		ft_putchar('2');
+		nb = (nb % 1000000000 * -1);
 	}
-	else
-		n = nbr;
-	if (n >= 10)
-		ft_putnbr(n / 10);
-	ft_putchar((char)n % 10 + 48);
+	if (nb < 0)
+	{
+		ft_putchar('-');
+		nb = (nb * -1);
+	}
+	if (nb / 10 > 0)
+		ft_putnbr(nb / 10);
+	ft_putchar(nb % 10 + '0');
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, char *argv[])
 {
 	int	i;
-	int	n;
+	int	nbr;
 
 	if (argc != 2)
-		write (1, "\n", 1);
+		write(1, "\n", 1);
 	else
 	{
-		i = 0;
-		n = ft_atoi(argv[1]);
+		i = 1;
+		nbr = ft_atoi(argv[1]);
 		while (i <= 9)
 		{
 			ft_putnbr(i);
-			write (1, " x ", 3);
-			ft_putnbr(n);
-			write (1, " = ", 3);
-			ft_putnbr(i * n);
-			write (1, "\n", 1);
-			i++;
+			write(1, " x ", 3);
+			ft_putnbr(nbr);
+			write(1, " = ", 3);
+			ft_putnbr(i * nbr);
+			write(1, "\n", 1);
+			i += 1;
 		}
 	}
 	return (0);
