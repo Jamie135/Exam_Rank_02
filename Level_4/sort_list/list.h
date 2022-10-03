@@ -1,17 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list.h                                          :+:      :+:    :+:   */
+/*   list.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbureera <pbureera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 14:21:38 by pbureera          #+#    #+#             */
-/*   Updated: 2022/09/21 14:21:55 by pbureera         ###   ########.fr       */
+/*   Created: 2022/10/03 21:36:14 by marvin            #+#    #+#             */
+/*   Updated: 2022/10/03 21:36:14 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef struct    s_list
+typedef struct	s_list	t_list;
+
+struct	s_list
 {
-    struct s_list *next;
-    void          *data;
-}                 t_list;
+	int		data;
+	t_list	*next;
+};
