@@ -13,14 +13,25 @@
 #include <unistd.h>
 #include <stdio.h>
 
-void	ft_number(int n)
+void	ft_putchar(char c)
 {
-	char	*str;
+	write (1, &c, 1);
+}
 
-	str = "0123456789";
-	if (n > 9)
-		ft_number(n / 10);
-	write (1, &str[n % 10], 1);
+void	ft_putnbr(int nbr)
+{
+	unsigned int	n;
+
+	if (nbr < 0)
+	{
+		n = (unsigned int)nbr * -1;
+		ft_putchar('-');
+	}
+	else
+		n = nbr;
+	if (nbr >= 10)
+		ft_putnbr(n / 10);
+	ft_putchar((char)n % 10 + 48);
 }
 
 int	main(void)
@@ -37,7 +48,7 @@ int	main(void)
 		else if (i % 5 == 0)
 			write (1, "buzz", 4);
 		else
-			ft_number(i);
+			ft_putnbr(i);
 		i++;
 		write (1, "\n", 1);
 	}
