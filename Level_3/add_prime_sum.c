@@ -16,8 +16,8 @@ int	is_prime(int n)
 {
 	int	i;
 
-	i = 3;
-	if (n <= 0)
+	i = 2;
+	if (n <= 1)
 		return (0);
 	while (i < n)
 	{
@@ -54,22 +54,25 @@ int	ft_atoi(char *str)
 	return (result);
 }
 
+void	ft_putchar(char c)
+{
+	write (1, &c, 1);
+}
+
 void	ft_putnbr(int nbr)
 {
 	unsigned int	n;
-	char	digit;
 
 	if (nbr < 0)
 	{
-		write (1, "-", 1);
+		ft_putchar('-');
 		n = (unsigned int)nbr * -1;
 	}
 	else
 		n = nbr;
 	if (n >= 10)
 		ft_putnbr(n / 10);
-	digit = (n % 10) + 48;
-	write (1, &digit, 1);
+	ft_putchar((char)n % 10 + 48);
 }
 
 int	main(int argc, char **argv)
@@ -78,15 +81,21 @@ int	main(int argc, char **argv)
 	int	n;
 
 	sum = 0;
-	n = ft_atoi(argv[1]);
-	if (argc == 2 && n >= 0)
+	if (argc == 2)
 	{
-		while (n > 0)
+		n = ft_atoi(argv[1]);
+		if (n > 1)
 		{
-			if (is_prime(--n))
-				sum += n;
+			while (n)
+			{
+				if (is_prime(n))
+					sum += n;
+				n--;
+			}
+			ft_putnbr(sum);
 		}
-		ft_putnbr(sum);
+		else
+			ft_putnbr(0);
 	}
 	else
 		ft_putnbr(0);
