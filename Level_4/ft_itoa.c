@@ -45,14 +45,14 @@ char    *ft_itoa(int nbr)
 		return (NULL);
 	if (n == 0)
 		str[0] = 48;
-	if (n < 0);
+	if (n < 0)
 	{
 		str[0] = '-';
 		n *= -1;
 	}
 	while (n > 0)
 	{
-		str[len--] = (n % 10) + 48;
+		str[len--] = n % 10 + 48;
 		n /= 10;
 	}
 	return (str);
