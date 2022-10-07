@@ -12,28 +12,26 @@
 
 #include <stdlib.h>
 
-int	len_word(char *str)
+int	len_words(char *str)
 {
 	int	len;
 
 	len = 0;
-	while (*str != ' ' || *str != '\t' || *str != '\n' || *str != '\0')
+	while (str[len] && str[len] != ' ' && str[len] != '\t' && str[len] != '\n')
 		len++;
 	return (len);
 }
 
-char	duplicate_word(char *str)
+char	duplicate_words(char *str)
 {
 	int	i;
 	int	len;
 	char	*word;
 
 	i = 0;
-	len = len_word(str);
+	len = len_words(str);
 	word = malloc(sizeof(char *) * (len + 1));
-	if (!word)
-		return (NULL);
-	word[len] = 0;
+	word[len] = '\0';
 	while (str[i])
 	{
 		word[i] = str[i];
@@ -48,15 +46,15 @@ void	fill_words(char **array, char *str)
 
 	i = 0;
 	while (*str == ' ' || *str == '\t' || *str == '\n')
-		*str++;
+		str++;
 	while (*str)
 	{
-		array[i] = duplicate_word(str);
+		array[i] = duplicate_words(str);
 		i++;
-		while (*str != ' ' || *str != '\t' || *str != '\n' || *str != '\0')
-			*str++;
+		while (*str != ' ' && *str != '\t' && *str != '\n' && *str != '\0')
+			str++;
 		while (*str == ' ' || *str == '\t' || *str == '\n')
-			*str++;
+			str++;
 	}
 }
 
@@ -66,14 +64,14 @@ int	count_words(char *str)
 
 	words = 0;
 	while (*str == ' ' || *str == '\t' || *str == '\n')
-		*str++;
+		str++;
 	while (*str)
 	{
 		words++;
-		while (*str != ' ' || *str != '\t' || *str != '\n' || *str != '\0')
-			*str++;
+		while (*str != ' ' && *str != '\t' && *str != '\n' && *str != '\0')
+			str++;
 		while (*str == ' ' || *str == '\t' || *str == '\n')
-			*str++;
+			str++;
 	}
 	return (words);
 }
@@ -85,8 +83,6 @@ char	**ft_split(char *str)
 
 	words = count_words(str);
 	array = malloc(sizeof(char *) * (words + 1));
-	if (!array)
-		return (NULL);
 	array[words] = 0;
 	fill_words(array, str);
 	return (array);

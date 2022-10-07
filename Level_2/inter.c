@@ -12,7 +12,7 @@
 
 #include <unistd.h>
 
-int	iter(char *str, char c, int len)
+int	inter(char *str, char c, int len)
 {
 	int	i;
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 	{
 		while (argv[1][i])
 		{
-			if (!iter(argv[1], argv[1][i], i) && iter(argv[2], argv[2][i], -1))
+			if (!inter(argv[1], argv[1][i], i) && inter(argv[2], argv[1][i], -1))
 				write (1, &argv[1][i], 1);
 			i++;
 		}

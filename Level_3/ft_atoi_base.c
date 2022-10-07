@@ -17,17 +17,17 @@ char	to_lower(char c)
 	return (c);
 }
 
-int	get_digit(char c, int base_digit)
+int	get_digit(char c, int str_base)
 {
-	int	max_digit;
+	int	digit;
 
-	if (base_digit <= 10)
-		max_digit = base_digit + '0';
+	if (str_base <= 10)
+		digit = str_base + '0';
 	else
-		max_digit = base_digit - 10 + 'a';
-	if (c >= '0' && c <= '9' && c <= max_digit)
+		digit = str_base - 10 + 'a';
+	if (c >= '0' && c <= '9' && c <= digit)
 		return (c - '0');
-	else if (c >= 'a' && c <= 'f' && c <= max_digit)
+	else if (c >= 'a' && c <= 'f' && c <= digit)
 		return (c + 10 - 'a');
 	else
 		return (-1);
@@ -35,14 +35,14 @@ int	get_digit(char c, int base_digit)
 
 int	ft_atoi_base(const char *str, int str_base)
 {
-	int	result;
-	int	sign;
-	int digit;
 	int	i;
+	int	sign;
+	int	res;
+	int digit;
 
-	result = 0;
-	sign = 1;
 	i = 0;
+	sign = 1;
+	res = 0;
 	if (str[i] == '-')
 	{
 		sign = -1;
@@ -50,9 +50,9 @@ int	ft_atoi_base(const char *str, int str_base)
 	}
 	while ((digit = get_digit(to_lower(str[i]), str_base)) >= 0)
 	{
-		result = result * str_base;
-		result = result + (digit * sign);
+		res = res * str_base;
+		res = res + (digit * sign);
 		i++;
 	}
-	return (result);
+	return (res);
 }

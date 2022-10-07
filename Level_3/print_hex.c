@@ -21,7 +21,7 @@ int	ft_atoi(char *str)
 	i = 0;
 	sign = 1;
 	result = 0;
-	while (str[i] >= 9 || str[i] <= 13)
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] == '+' || str[i] == '-')
 	{
@@ -37,18 +37,18 @@ int	ft_atoi(char *str)
 	return (result * sign);
 }
 
-void	hexa(int n)
+void	print_hex(int n)
 {
 	char	hex[] = "0123456789abcdef";
 
 	if (n >= 16)
-		hexa(n / 16);
+		print_hex(n / 16);
 	write (1, &hex[n % 16], 1);
 }
 
 int	main(int argc, char **argv)
 {
 	if (argc == 2)
-		hex(ft_atoi(argv[1]));
+		print_hex(ft_atoi(argv[1]));
 	write (1, "\n", 1);
 }

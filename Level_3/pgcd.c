@@ -10,30 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 int	main(int argc, char **argv)
 {
 	int	n1;
 	int	n2;
+	int	m;
 
-	n1 = atoi(argv[1]);
-	n2 = atoi(argv[2]);
 	if (argc == 3)
 	{
-		if (n1 > 0 && n2 > 0)
+		n1 = atoi(argv[1]);
+		n2 = atoi(argv[2]);
+		if (n1 < n2)
+			m = n1;
+		else
+			m = n2;
+		while (m > 1)
 		{
-			while (n1 != n2)
-			{
-				if (n1 > n2)
-					n1 -= n2;
-				else
-					n2 -= n1;
-			}
-			printf("%d", n1);
+			if (n1 % m == 0 && n2 % m == 0)
+				break;
+			m--;
 		}
+		printf("%d", m);
 	}
 	printf("\n");
-	return (0);
 }

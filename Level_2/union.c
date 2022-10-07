@@ -12,7 +12,7 @@
 
 #include <unistd.h>
 
-int	check(int c, char *str, int index)
+int	uni(char *str, char c, int index)
 {
 	int	i;
 
@@ -45,10 +45,9 @@ int	main(int argc, char **argv)
 			i++;
 			j++;
 		}
-		i--;
-		while (k <= i)
+		while (k < i)
 		{
-			if (check(argv[1][k], argv[1], k) == 1)
+			if (uni(argv[1], argv[1][k], k) == 1)
 				write (1, &argv[1][k], 1);
 			k++;
 		}

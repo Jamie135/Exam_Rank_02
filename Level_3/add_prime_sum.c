@@ -99,6 +99,6 @@ int	main(int argc, char **argv)
 	}
 	else
 		ft_putnbr(0);
-	write (1, "\n", 1);
+	ft_putchar("\n");
 	return (0);
 }

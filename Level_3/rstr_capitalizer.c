@@ -12,18 +12,18 @@
 
 #include <unistd.h>
 
-void	captitalizer(char *str)
+void	capitalizer(char *str)
 {
 	int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		if ((str[i + 1] == '\0' || str[i + 1] == ' ' || str[i + 1] == '\t')
-			&& (str[i] >= 'a' && str[i] <= 'z'))
-			str[i] -= 32;
-		if (str[i] >= 'A' && str[i] <= 'Z')
+		if (str[i] >= 65 && str[i] <= 90)
 			str[i] += 32;
+		if (str[i] >= 97 && str[i] <= 122 && (str[i + 1] == ' ' || str[i + 1] == '\t'
+			|| str[i + 1] == '\0'))
+			str[i] -= 32;
 		write (1, &str[i], 1);
 		i++;
 	}
@@ -34,16 +34,15 @@ int	main(int argc, char **argv)
 	int	i;
 
 	i = 1;
-	if (argc < 2)
-		write(1, "\n", 1);
-	else
+	if (argc > 1)
 	{
 		while (i < argc)
 		{
-			captitalizer(argv[i]);
+			capitalizer(argv[i]);
 			write (1, "\n", 1);
 			i++;
 		}
 	}
-	return (0);
+	else
+		write (1, "\n", 1);
 }

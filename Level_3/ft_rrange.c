@@ -11,30 +11,29 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
 int	*ft_rrange(int start, int end)
 {
-	int	*str;
-	int	len;
-	int i;
+	int	i;
+	int	size;
+	int	*tab;
 
-	if (start <= end)
-		len = end - start;
-	else
-		len = start - end;
-	str = malloc(sizeof(int) * (len + 1));
-	if (!str)
-		return (NULL);
 	i = 0;
-	while (i <= len)
+	if (start <= end)
+		size = end - start;
+	else
+		size = start - end;
+	tab = malloc(sizeof(int) * (size + 1));
+	if (!tab)
+		return (0);
+	while (i <= size)
 	{
-		str[i] = end;
+		tab[i] = end;
 		if (start <= end)
 			end--;
 		else
 			end++;
 		i++;
 	}
-	return (str);
+	return (tab);
 }
