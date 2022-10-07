@@ -23,18 +23,18 @@ int	main(int argc, char **argv)
 	{
 		while (argv[1][i])
 		{
-			j = 0;
 			if (argv[1][i] >= 65 && argv[1][i] <= 90)
 			{
+				j = 0;
 				while (j < argv[1][i] - 65)
 				{
 					write (1, &argv[1][i], 1);
 					j++;
 				}
 			}
-			j = 0;
 			if (argv[1][i] >= 97 && argv[1][i] <= 122)
 			{
+				j = 0;
 				while (j < argv[1][i] - 96)
 				{
 					write (1, &argv[1][i], 1);

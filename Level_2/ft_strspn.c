@@ -36,9 +36,7 @@ size_t	ft_strspn(const char *s, const char *accept)
 	while (s[i])
 	{
 		if (ft_strchr(accept, s[i]) == 0)
-		{
 			break;
-		}
 		i++;
 	}
 	return (i);

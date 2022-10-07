@@ -19,8 +19,9 @@ int	inter(char *str, char c, int len)
 	i = 0;
 	while (str[i] && (i < len || len == -1))
 	{
-		if (str[i++] == c)
+		if (str[i] == c)
 			return (1);
+		i++;
 	}
 	return (0);
 }
