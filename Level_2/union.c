@@ -45,7 +45,8 @@ int	main(int argc, char **argv)
 			i++;
 			j++;
 		}
-		while (k < i)
+		i--;
+		while (k <= i)
 		{
 			if (uni(argv[1], argv[1][k], k) == 1)
 				write (1, &argv[1][k], 1);
